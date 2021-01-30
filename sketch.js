@@ -2,7 +2,7 @@ const World=Matter.World;
 const Engine=Matter.Engine;
 const Bodies=Matter.Bodies;
 
-var engine,object,world,obectP,ball,ballP;
+var engine,object,world,obectP,ball,ballP,ground,groundP;
 
 function setup() {
   createCanvas(400,400);
@@ -15,10 +15,13 @@ function setup() {
   
    World.add(world,object);
    console.log(object);
- 
-   ball=Bodies.circle(100,100,30,ballP);
+
+   ground = Bodies.rectangle(200,390,200,20,obectP);
+   World.add(world,ground);
+
+   ball=Bodies.circle(150,100,30,ballP);
    World.add(world,ball);
-   
+  
 }
 
 function draw() {
@@ -27,5 +30,7 @@ function draw() {
   rectMode(CENTER);
   rect(200,200,50,50);
   rect(object.position.x,object.position.y,100,100);
+  rect(ground.position.x,ground.position.y,400,20);
   circle(ball.position.x,ball.position.y,30); 
+
 }
